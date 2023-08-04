@@ -28,9 +28,13 @@
 
       <div class="form-group">
         <%= form.label :position %>
-          <%= form.select(:position, [['ceo', 'ceo'],
-                ['lead', 'lead'],
-                ['manager', 'manager']],
+          <%= form.select(:position, [['intern', 'intern'],
+                ['junior', 'junior'],
+                ['senior', 'senior'],
+                ['pm', 'pm'],
+                ['ceo', 'ceo'],
+                ['cto', 'cto'],
+                ['bo', 'bo']],
                 { include_blank: 'please select position' },
                 { :class => "form-control"}) %>
       </div>

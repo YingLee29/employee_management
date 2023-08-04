@@ -31,7 +31,7 @@ class MembersController < ApplicationController
   #   redirect_to root_path, notice: 'User was successfully destroyed.'
   # end
 
-  # private
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :information, :phone, :position )

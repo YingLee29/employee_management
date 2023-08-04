@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="mt-5">
+    <%= form_with(model: @project, url: projects_path, data: { turbo_method: :post }) do |form| %>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :information %>
+        <%= form.text_area :information, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :deadline %>
+        <%= form.date_field :deadline, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :project_type %>
+          <%= form.select(:project_type, [['lab', 'lab'],
+                ['single', 'single'],
+                ['acceptance', 'acceptance']],
+                { include_blank: 'please select project type' },
+                { :class => "form-control"}) %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :status %>
+          <%= form.select(:status, [['planned', 'planned'],
+                ['onhold', 'onhold'],
+                ['doing', 'doing'],
+                ['done', 'done'],
+                ['cancelled', 'cancelled']],
+                { include_blank: 'please select position' },
+                { :class => "form-control"}) %>
+      </div>
+
+      <%= form.submit "Create User", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
