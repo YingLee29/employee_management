@@ -25,11 +25,11 @@ class MembersController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   @user = current_user
-  #   @user.destroy
-  #   redirect_to root_path, notice: 'User was successfully destroyed.'
-  # end
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to members_path, notice: 'User and associotice: Member was successfully destroyed.'
+  end
 
   private
 
