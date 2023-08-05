@@ -10,6 +10,7 @@
           <th>Phone</th>
           <th>Position</th>
           <th>Birth</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,11 @@
             <td><%= user.phone %></td>
             <td><%= user.position %></td>
             <td><%= user.birth %></td>
+            <td>
+            <%= link_to member_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <span><i class="fa-solid fa-trash mx-2" style="color: #ff3300;"></i></span>
+            <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
