@@ -1,48 +1,59 @@
-<div class="d-flex justify-content-center" data-controller='user-project'>
-  <div class="mt-5">
+<div class="container mt-5">
+  <h2>Create Project</h2>
+  <div class="user-new-container">
     <%= form_with(model: @project, url: projects_path, data: { turbo_method: :post }) do |form| %>
-      <div class="form-group">
-        <%= form.label :name %>
-        <%= form.text_field :name, class: "form-control" %>
-      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
 
-      <div class="form-group">
-        <%= form.label :information %>
-        <%= form.text_area :information, class: "form-control" %>
-      </div>
+          <div class="form-group mb-3">
+            <%= form.label :information %>
+            <%= form.text_area :information, class: "form-control" %>
+          </div>
 
-      <div class="form-group">
-        <%= form.label :deadline %>
-        <%= form.date_field :deadline, class: "form-control" %>
-      </div>
+          <div class="form-group mb-3">
+            <%= form.label :deadline %>
+            <%= form.date_field :deadline, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <%= form.label :project_type %>
+            <%= form.select(:project_type, [['lab', 'lab'],
+                  ['single', 'single'],
+                  ['acceptance', 'acceptance']],
+                  {},
+                  { class: "form-control" }) %>
+          </div>
 
-      <div class="form-group">
-        <%= form.label :project_type %>
-          <%= form.select(:project_type, [['lab', 'lab'],
-                ['single', 'single'],
-                ['acceptance', 'acceptance']],
-                { include_blank: 'please select project type' },
-                { :class => "form-control"}) %>
-      </div>
+          <div class="form-group mb-3">
+            <%= form.label :status %>
+            <%= form.select(:status, [['planned', 'planned'],
+                  ['onhold', 'onhold'],
+                  ['doing', 'doing'],
+                  ['done', 'done'],
+                  ['cancelled', 'cancelled']],
+                  {},
+                  { class: "form-control" }) %>
+          </div>
 
-      <div class="form-group">
-        <%= form.label :status %>
-          <%= form.select(:status, [['planned', 'planned'],
-                ['onhold', 'onhold'],
-                ['doing', 'doing'],
-                ['done', 'done'],
-                ['cancelled', 'cancelled']],
-                { include_blank: 'please select position' },
-                { :class => "form-control"}) %>
+          <div class="form-group mb-3">
+            <%= form.label :users, "Select user" %>
+            <%= form.select(:user_ids,
+                          @users.collect { |user| [user.name, user.id] },
+                          {},
+                          { class: "form-control", id: "multiple-select-field", multiple: true, "data-placeholder" => "Choose anything" }) %>
+          </div>
+        </div>
       </div>
-      <div class="form-group mt-5 mb-5">
-        <%= form.select(:user_ids,
-                      @users.collect { |user| [user.name, user.id] },
-                      { },
-                      { class: "form-control", id: "multiple-select-field", multiple: true, "data-placeholder" => "Choose anything" }) %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= form.submit "Create Project", class: "btn btn-primary" %>
+        </div>
       </div>
-
-      <%= form.submit "Create User", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
