@@ -16,14 +16,19 @@ class MembersController < ApplicationController
     end
   end
 
-  # def update
-  #   @user = current_user
-  #   if @user.update(user_params)
-  #     redirect_to @user, notice: 'User was successfully updated.'
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to members_path, notice: 'User was successfully updated.'
+    else
+      puts @user.errors.full_messages
+      render :edit
+    end
+  end
 
   def destroy
     user = User.find(params[:id])
@@ -34,6 +39,6 @@ class MembersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :information, :phone, :position )
+    params.require(:user).permit(:name, :email, :password, :phone, :position, :information)
   end
 end
