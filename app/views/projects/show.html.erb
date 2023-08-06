@@ -1,0 +1,16 @@
+
+<div class="container mt-5">
+  <h2>Project Details</h2>
+  <div class="user-new-container">
+    <p>Project Name: <%= @project.name %></p>
+
+    <p>Members:</p>
+    <ul>
+      <% @user_project.each do |user_project| %>
+        <li><%= user_project.user.name %> | role: </li>
+      <% end %>
+    </ul>
+
+    <%= link_to 'Back', projects_path, class:"btn btn-primary"%>
+  </div>
+</div>

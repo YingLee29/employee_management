@@ -3,6 +3,11 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def show
+    @project = Project.find(params[:id])
+    @user_project = @project.user_projects
+  end
+
   def new
     @users = User.all
     @project = Project.new

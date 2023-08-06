@@ -1,2 +1,37 @@
 en:
-  hello: Hello Vietnam
+  errors:
+    format: "%{message}"
+  hello: "Hello world"
+  activerecord:
+    recordnotfound: "List user is changed! Please try again."
+    errors:
+      models:
+        user:
+          list_changed: "List service is changed! Please try again."
+          attributes:
+            current_password:
+              blank: "Current password can't be blank"
+              invalid: "Current password is incorrect"
+            password:
+              too_short: "Password is too short (minimum is 6 characters)"
+              too_long: "Password is too long (maximum is 25 characters)"
+              blank: "New password can't be blank"
+              invalid: "Your new password contains invalid characters."
+            password_confirmation:
+              confirmation: "Confirm new password doesn't match New password"
+              blank: "Confirmation new password can't be blank"
+            reset_password_token:
+              invalid: "System errors."
+            name:
+              blank: "Name can't be blank"
+              invalid: 'Name is invalid (must not contain these characters: / ? > < % # , ; : " \)'
+            email:
+              blank: Email can't be blank
+              exist: This email already exists.
+              not_found: "Email is invalid"
+        company:
+          attributes:
+            name:
+              invalid: 'Name is invalid (must not contain these characters: / ? > < % # , ; : " \)'
+    exceptions:
+      not_found: "Data is not found!"
