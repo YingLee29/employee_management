@@ -7,6 +7,6 @@ Rails.application.routes.draw do
                 sessions: 'users/sessions',
                 registrations: 'users/registrations',
               }
-  resources :members, only: [:index, :create, :new, :destroy]
-  resources :projects, only: [:index, :create, :new, :destroy]
+  resources :members, only: [:index, :create, :new, :destroy, :update, :edit]
+  resources :projects, only: [:index, :create, :new, :destroy, :update, :edit]
 end

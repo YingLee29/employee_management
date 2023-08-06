@@ -23,9 +23,14 @@
             <td><%= user.position %></td>
             <td><%= user.birth %></td>
             <td>
-            <%= link_to member_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-              <span><i class="fa-solid fa-trash mx-2" style="color: #ff3300;"></i></span>
-            <% end %>
+            <%if user != current_user %>
+              <%= link_to member_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+                <span><i class="fa-solid fa-trash mx-2" style="color: #ff3300;"></i></span>
+              <% end %>
+              <%= link_to edit_member_path(user) do %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+            <%end%>
             </td>
           </tr>
         <% end %>
