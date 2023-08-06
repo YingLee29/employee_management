@@ -27,7 +27,10 @@
               <span><i class="fa-solid fa-trash mx-2" style="color: #ff3300;"></i></span>
             <% end %>
             <%= link_to edit_project_path(project) do %>
-              <i class="fa-solid fa-pen"></i>
+              <i class="fa-solid fa-pen" style="color: #000000;"></i>
+            <% end %>
+            <%= link_to project_path(project) do %>
+              <i class="fa-solid fa-eye mx-2" style="color: #000000;"></i>
             <% end %>
             </td>
           </tr>
