@@ -7,6 +7,10 @@ Rails.application.routes.draw do
                 sessions: 'users/sessions',
                 registrations: 'users/registrations',
               }
-  resources :members, only: [:index, :create, :new, :destroy, :update, :edit]
-  resources :projects, only: [:index, :create, :new, :destroy, :update, :edit, :show]
+  resources :members, except: [:show]
+  resources :projects do
+    collection do
+      get :list_members
+    end
+  end
 end

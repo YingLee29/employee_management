@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% list_members.each_with_index do |user, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= user.name %></td>
+        <td>
+          <%= select_tag "user_roles[#{user.id}]", options_for_select([['dev', 'dev'], ['pl','pl'], ['pm', 'pm'],['po', 'po'], ['sm', 'sm']]), class: "form-select" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
