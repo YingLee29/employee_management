@@ -1,15 +1,25 @@
-
-<div class="container mt-5">
+<div class="container mt-2">
   <h2>Project Details</h2>
   <div class="user-new-container">
-    <p>Project Name: <%= @project.name %></p>
-
-    <p>Members:</p>
-    <ul>
+    <div>
+      Project Name: <span style="color: blue"><%= @project.name.capitalize %></span>
+    </div>
+    <div>
+    <span>Members:</span>
+    <table style="margin-bottom: 25px; margin-left: 25px;">
+      <tr>
+        <th style="padding-right: 50px;">Name</th>
+        <th>Role</th>
+      </tr>
       <% @user_project.each do |user_project| %>
-        <li><%= user_project.user.name %> | role: </li>
+        <tr>
+          <td><%= user_project.user.name %></td>
+          <td><%= user_project.role %></td>
+        </tr>
       <% end %>
-    </ul>
+    </table>
+    </div>
+
 
     <%= link_to 'Back', projects_path, class:"btn btn-primary"%>
   </div>
