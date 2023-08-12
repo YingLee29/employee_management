@@ -7,4 +7,8 @@ class Project < ApplicationRecord
 
   validates :name,  length: { maximum: 10 }, presence: :true
   validates :information,  length: { maximum: 300 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
 end

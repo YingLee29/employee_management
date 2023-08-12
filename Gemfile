@@ -15,6 +15,7 @@ gem "importmap-rails"
 gem "jbuilder"
 gem "jquery-rails"
 gem "kaminari", "1.2.2"
+gem 'ransack', '~> 4.0'
 gem "pg", "1.4.5"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.5"

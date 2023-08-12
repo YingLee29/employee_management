@@ -14,4 +14,8 @@ class User < ApplicationRecord
   validates :information,  length: { maximum: 300 }
   validates :phone,  length: { is: 10 }
   validates :email, format: { with: VALID_EMAIL_REGEX}, presence: :true
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
 end

@@ -1,6 +1,13 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="user-list-container">
-    <%= link_to "Create Member", new_member_path, class: "btn btn-primary float-right mb-2" %>
+    <div>
+      <%= link_to "Create Member", new_member_path, class: "btn btn-primary float-right mb-2" %>
+      <%= search_form_for @q, url: members_path, method: :get do |f| %>
+        <%= f.label :name_cont, "Search by Name" %>
+        <%= f.search_field :name_cont %>
+        <%= f.submit "Search" %>
+      <% end %>
+    </div>
     <table class="table">
       <thead>
         <tr>
