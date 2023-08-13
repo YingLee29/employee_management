@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="user-list-container">
     <div>
-      <%= link_to "Create Project", new_project_path, class:"btn btn-primary",data: {turbolinks: false} %>
+      <%= link_to "Create Project", new_project_path, class:"btn btn-primary float-project mb-2",data: {turbolinks: false} %>
       <%= search_form_for @q, url: projects_path, method: :get do |f| %>
         <%= f.label :name_cont, "Search by Name" %>
         <%= f.search_field :name_cont %>
@@ -44,5 +44,10 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @projects,
+      theme: 'bootstrap-5',
+      pagination_class: "pagination justify-content-end w-100",
+      nav_class: "d-flex page-paginate w-100"
+    %>
   </div>
 </div>

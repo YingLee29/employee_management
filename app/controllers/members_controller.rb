@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result.page(params[:page])
+    @users = @q.result.page(params[:page]).per(5)
   end
 
   def new

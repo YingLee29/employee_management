@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="user-list-container">
     <div>
-      <%= link_to "Create Member", new_member_path, class: "btn btn-primary float-right mb-2" %>
+      <%= link_to "Create Member", new_member_path, class: "btn btn-primary float-user mb-2" %>
       <%= search_form_for @q, url: members_path, method: :get do |f| %>
         <%= f.label :name_cont, "Search by Name" %>
         <%= f.search_field :name_cont %>
@@ -21,6 +21,7 @@
         </tr>
       </thead>
       <tbody>
+      <%# <% order_number = 1 + (params[:page].to_i - 1) * Kaminari.config.default_per_page %>
         <% @users.each_with_index do |user, index| %>
           <tr>
             <td><%= index + 1 %></td>
@@ -43,5 +44,10 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @users,
+      theme: 'bootstrap-5',
+      pagination_class: "pagination justify-content-end w-100",
+      nav_class: "d-flex page-paginate w-100"
+    %>
   </div>
 </div>

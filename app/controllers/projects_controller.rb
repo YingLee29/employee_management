@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   def index
     @q = Project.ransack(params[:q])
-    @projects = @q.result.page(params[:page])
+    @projects = @q.result.page(params[:page]).per(5)
   end
 
   def show
