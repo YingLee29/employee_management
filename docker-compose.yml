@@ -19,7 +19,7 @@ services:
       - rails_cache:/employ_management/tmp/cache
     depends_on:
       - db
-    # command: bash -c "bundle install && rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
+    command: bash -c "bundle install && rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
 volumes:
   bundle:
     driver: local
