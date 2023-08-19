@@ -18,3 +18,4 @@ RUN gem update --system
 
 RUN mkdir $APP
 WORKDIR $APP
+MembersController
