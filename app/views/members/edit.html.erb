@@ -1,34 +1,26 @@
-<div class="container mt-5" data-controller="hello">
-  <h2>Create member</h2>
+<div class="container mt-5" data-controller="hello-controller">
+  <h2>Update member</h2>
   <div class="">
-    <%= form_with(model: @user, url: members_path, data: { turbo_method: :post, turbo: false }) do |form| %>
+    <%= form_with(model: @user, url: member_path(@user)) do |form| %>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group mb-3">
             <%= form.label :name %>
             <%= form.text_field :name, class: "form-control" %>
-            <p class='error'><%= show_errors(@user, :name) %></p>
           </div>
           <div class="form-group mb-3">
             <%= form.label :email %>
             <%= form.email_field :email, class: "form-control" %>
-            <p class='error'><%= show_errors(@user, :email) %></p>
           </div>
           <div class="form-group mb-3">
-            <%= form.label :password %>
-            <%= form.password_field :password, class: "form-control" %>
-          </div>
-                    <div class="form-group mb-3">
             <%= form.label :birth %>
             <%= form.date_field :birth, class: "form-control" %>
-            <p class='error'><%= show_errors(@user, :birth) %></p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group mb-3">
             <%= form.label :phone %>
             <%= form.text_field :phone, class: "form-control" %>
-            <p class='error'><%= show_errors(@user, :phone) %></p>
           </div>
           <div class="form-group mb-3">
             <%= form.label :position %>
@@ -45,13 +37,12 @@
           <div class="form-group mb-3">
             <%= form.label :information %>
             <%= form.text_area :information, class: "form-control" %>
-            <p class='error'><%= show_errors(@user, :information) %></p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <%= form.submit "Create", class: "btn btn-primary" %>
+          <%= form.submit "Update", class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>

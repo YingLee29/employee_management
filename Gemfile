@@ -7,7 +7,7 @@ ruby "2.7.1"
 gem "rails", "~> 7.0.7"
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem "sassc", "~> 2.4"
-gem "bootstrap", "~> 5.3.0.alpha3"
+gem "bootstrap"
 gem "importmap-rails"
 gem "jquery-rails"
 gem "sprockets-rails"
