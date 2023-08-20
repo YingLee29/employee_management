@@ -19,7 +19,7 @@
             <%= form.password_field :password, class: "form-control" %>
             <p class='error text-color-errors'><%= show_errors(@user, :password) %></p>
           </div>
-                    <div class="form-group mb-3">
+          <div class="form-group mb-3">
             <%= form.label :birth %>
             <%= form.date_field :birth, class: "form-control" %>
             <p class='error text-color-errors'><%= show_errors(@user, :birth) %></p>
@@ -40,7 +40,7 @@
                   ['ceo', 'ceo'],
                   ['cto', 'cto'],
                   ['bo', 'bo']],
-                  { include_blank: 'please select position' },
+                  {},
                   { class: "form-control" }) %>
           </div>
           <div class="form-group mb-3">

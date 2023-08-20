@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @project = Project.all
+    @projects = Project.all
   end
 
 
@@ -12,45 +12,53 @@ class ProjectsController < ApplicationController
   def new
     @users = User.all
     @project = Project.new
-    end
+    @list_members = []
+  end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      params["project"]["user_ids"].each do |user_id|
-        @project.user_projects.create(user_id: user_id)
-      end
-      redirect_to projects_path, notice: 'Project was successfully created.'
+    @users = User.all
+    @list_members = []
+    @project = Project.create_with_user_roles(project_params: project_params, user_roles: params[:user_roles])
+    if @project.persisted?
+      redirect_to projects_path, notice: 'Project was successfully created'
     else
-      render root_path, notice: 'Project was unsuccessfully created.'
+      render :new
     end
   end
 
   def edit
     @project = Project.find(params[:id])
     @users = User.all
+    @list_members = User.where(id: @project.user_projects.pluck(:user_id))
   end
 
   def update
-    @project = Project.find(params[:id])
-    if @project.update(project_params)
-      @project.user_projects.destroy_all
-      params["project"]["user_ids"].each do |user_id|
-        @project.user_projects.create(user_id: user_id)
+    project = Project.find(params[:id])
+    ActiveRecord::Base.transaction do
+      if project.update_with_user_roles(project_params: project_params, user_roles: params[:user_roles])
+        redirect_to projects_path, notice: 'Project was successfully updated'
+      else
+        flash[:alert] = "can't update project"
+        render :edit
       end
-      redirect_to projects_path, notice: 'Project was successfully updated.'
-    else
-      puts @user.errors.full_messages
-      render :edit
     end
+  end
+
+  def list_members
+    @project = Project.find_by(id: params[:project_id])
+    list_member_ids = params[:user_ids]
+    @list_members = User.where(id: params[:user_ids])
   end
 
   def destroy
     project = Project.find(params[:id])
-    project.destroy
-    redirect_to projects_path, notice: 'Project and associotice: Project was successfully destroyed.'
+    if project.destroy
+      redirect_to projects_path, notice: 'Project was successfully destroyed'
+    else
+      flash[:alert] = 'Delete failed project'
+      redirect_to projects_path
+    end
   end
-
   private
 
   def project_params

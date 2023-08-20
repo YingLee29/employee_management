@@ -34,3 +34,13 @@ en:
               blank: "Information can't be blank"
             birth:
               blank: "Birth can't be blank"
+        project:
+          attributes:
+            name:
+              too_long: "Name is too long (maximum is 10 characters)"
+              blank: "Name project can't be blank"
+            information:
+              blank: "Information can't be blank"
+              too_long: "Name is too long (maximum is 300 characters)"
+            deadline:
+              blank: "Deadline can't be blank"

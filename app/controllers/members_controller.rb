@@ -32,8 +32,12 @@ class MembersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
-    redirect_to members_path, notice: 'User and associotice: Member was successfully destroyed.'
+    if user.destroy
+      redirect_to members_path, notice: 'User and associotice: Member was successfully destroyed'
+    else
+      flash[:alert] = 'Delete failed member'
+      redirect_to members_path
+    end
   end
 
   private

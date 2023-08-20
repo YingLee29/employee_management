@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="user-list-container">
+    <%= link_to "Create Project", new_project_path, class:"btn btn-primary",data: {turbolinks: false} %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Information</th>
+          <th>Deadline</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each_with_index do |project, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= project.name %></td>
+            <td><%= project.information %></td>
+            <td><%= project.deadline %></td>
+            <td><%= project.project_type %></td>
+            <td><%= project.status %></td>
+            <td>
+            <%= link_to "delete", project_path(project), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+
+            <%= link_to "edit", edit_project_path(project) %>
+
+            <%= link_to "detail", project_path(project) %>
+
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

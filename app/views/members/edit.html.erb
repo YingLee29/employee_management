@@ -1,7 +1,7 @@
 <div class="container mt-5" data-controller="hello-controller">
   <h2>Update member</h2>
   <div class="">
-    <%= form_with(model: @user, url: member_path(@user)) do |form| %>
+    <%= form_with(model: @user, url: member_path(@user),  data: { turbo: false }) do |form| %>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group mb-3">
