@@ -9,7 +9,7 @@ class MembersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save(context: :create)
       redirect_to members_path, notice: 'User was successfully created.'
     else
       render :new
@@ -25,6 +25,7 @@ class MembersController < ApplicationController
     if @user.update(user_params)
       redirect_to members_path, notice: 'User was successfully updated.'
     else
+      puts @user.errors.full_messages
       render :edit
     end
   end
@@ -37,6 +38,9 @@ class MembersController < ApplicationController
 
   private
 
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :information, :phone, :position, :birth)
+  end
   def user_params
     params.require(:user).permit(:name, :email, :password, :information, :phone, :position, :birth)
   end
